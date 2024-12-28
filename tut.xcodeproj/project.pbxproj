@@ -11,6 +11,7 @@
 		578A519B2D1EDB1C00ED76C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A519A2D1EDB1C00ED76C1 /* ContentView.swift */; };
 		578A519D2D1EDB1E00ED76C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 578A519C2D1EDB1E00ED76C1 /* Assets.xcassets */; };
 		578A51A02D1EDB1E00ED76C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 578A519F2D1EDB1E00ED76C1 /* Preview Assets.xcassets */; };
+		578A51A72D1EDBAA00ED76C1 /* 1.overlayVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A51A62D1EDBAA00ED76C1 /* 1.overlayVideo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		578A519A2D1EDB1C00ED76C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		578A519C2D1EDB1E00ED76C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		578A519F2D1EDB1E00ED76C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		578A51A62D1EDBAA00ED76C1 /* 1.overlayVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1.overlayVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				578A51982D1EDB1C00ED76C1 /* tutApp.swift */,
 				578A519A2D1EDB1C00ED76C1 /* ContentView.swift */,
+				578A51A62D1EDBAA00ED76C1 /* 1.overlayVideo.swift */,
 				578A519C2D1EDB1E00ED76C1 /* Assets.xcassets */,
 				578A519E2D1EDB1E00ED76C1 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578A51A72D1EDBAA00ED76C1 /* 1.overlayVideo.swift in Sources */,
 				578A519B2D1EDB1C00ED76C1 /* ContentView.swift in Sources */,
 				578A51992D1EDB1C00ED76C1 /* tutApp.swift in Sources */,
 			);
