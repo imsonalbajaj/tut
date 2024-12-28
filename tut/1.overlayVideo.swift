@@ -10,8 +10,8 @@ import AVKit
 
 struct OverlayVideo: View {
     let video_url_string = "https://static.vecteezy.com/system/resources/previews/016/465/804/mp4/silhouettes-flock-of-seagulls-over-the-sea-during-amazing-sky-video.mp4"
-    let videoHei = 64.0
-    let videoWei = 112.0
+    let videoHei = 100.0
+    let videoWei = 178.0
     @State private var currentOffset = CGSize(width: 0.0, height: UIScreen.main.bounds.height - 64.0)
     @State private var dragOffset = CGSize.zero
     
@@ -26,9 +26,10 @@ struct OverlayVideo: View {
             ZStack(alignment: .topLeading){
                 
                 VStack(alignment: .leading, spacing: 0){
-                    Color.red
-                    Color.green
-                    Color.blue
+                    Color.teal
+                        .overlay {
+                            LinearGradient(colors: [.clear, Color.brown], startPoint: .top, endPoint: .bottomTrailing)
+                        }
                 }
                 .ignoresSafeArea()
                 

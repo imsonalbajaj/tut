@@ -11,7 +11,7 @@ import SwiftUI
 struct tutApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OverlayVideo()
         }
     }
 }
