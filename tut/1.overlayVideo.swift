@@ -9,22 +9,17 @@ import SwiftUI
 import AVKit
 
 struct OverlayVideo: View {
+    /*replace video url --> with your hosted url --> i have taken some random for display*/
     let video_url_string = "https://static.vecteezy.com/system/resources/previews/016/465/804/mp4/silhouettes-flock-of-seagulls-over-the-sea-during-amazing-sky-video.mp4"
     let videoHei = 100.0
     let videoWei = 178.0
-    @State private var currentOffset = CGSize(width: 0.0, height: UIScreen.main.bounds.height - 64.0)
+    let videoPaddingHorizontal = 12.0
+    @State private var currentOffset = CGSize(width: 0.0, height: UIScreen.main.bounds.height - 100.0/*hei*/)
     @State private var dragOffset = CGSize.zero
     
-    let maxVideoHei = 300.0
-    let maxVideoWei = CGFloat.infinity
-    
-    let videoPaddingHorizontal = 12.0
-    
     var body: some View {
-        
         GeometryReader { geometry in
             ZStack(alignment: .topLeading){
-                
                 VStack(alignment: .leading, spacing: 0){
                     Color.teal
                         .overlay {
@@ -48,22 +43,19 @@ struct OverlayVideo: View {
                     .gesture(
                         DragGesture()
                             .onChanged { value in
-                                print(value.translation)
-                                    dragOffset = value.translation
+                                dragOffset = value.translation
                             }
                             .onEnded { _ in
-                                    let newOffsetX = currentOffset.width + dragOffset.width
-                                    let newOffsetY = currentOffset.height + dragOffset.height
-                                    
-                                    currentOffset.width = min(max(newOffsetX, 0), geometry.size.width - (videoWei + 2 * videoPaddingHorizontal))
-                                    currentOffset.height = min(max(newOffsetY, 0), geometry.size.height - videoHei)
-                                    
-                                    dragOffset = .zero
+                                let newOffsetX = currentOffset.width + dragOffset.width
+                                let newOffsetY = currentOffset.height + dragOffset.height
+                                
+                                currentOffset.width = min(max(newOffsetX, 0), geometry.size.width - (videoWei + 2 * videoPaddingHorizontal))
+                                currentOffset.height = min(max(newOffsetY, 0), geometry.size.height - videoHei)
+                                dragOffset = .zero
                             }
                     )
             }
         }
-        
     }
 }
 
