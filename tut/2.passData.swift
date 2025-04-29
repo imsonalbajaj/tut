@@ -109,7 +109,7 @@ class VC2: UIViewController {
     @objc func pinkBtnAction() {
         if let vc1 {
             vc1.bgColor = UIColor.systemPink
-            vc1.view.backgroundColor = UIColor.systemPink  // ✅ force view update
+            vc1.view.backgroundColor = UIColor.systemPink
         }
         self.navigationController?.popViewController(animated: true)
     }
