@@ -9,7 +9,7 @@
 import UIKit
 
 
-//MARK: 0 - using raw
+//MARK: - 0. using raw
 /*
  
 class VC1: UIViewController {
@@ -118,7 +118,7 @@ class VC2: UIViewController {
 */
 
 
-//MARK: 1 - using closure
+//MARK: - 1. using closure
 /*
 class VC1: UIViewController {
     var bgColor = UIColor.cyan
@@ -230,7 +230,7 @@ class VC2: UIViewController {
 */
 
 
-//MARK: 2 - using delegate
+//MARK: - 2. using delegate
 
 protocol VC1protocol: AnyObject {
     func changeBgToPinkOnBack()
