@@ -119,7 +119,7 @@ class VC2: UIViewController {
 
 
 //MARK: 1 - using closure
-
+/*
 class VC1: UIViewController {
     var bgColor = UIColor.cyan
     
@@ -224,6 +224,119 @@ class VC2: UIViewController {
     
     @objc func pinkBtnAction() {
         self.changeBgToPinkOnBack?()
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+*/
+
+
+//MARK: 2 - using delegate
+
+protocol VC1protocol: AnyObject {
+    func changeBgToPinkOnBack()
+}
+
+class VC1: UIViewController, VC1protocol {
+    var bgColor = UIColor.cyan
+    
+    let btn :UIButton = {
+        let button = UIButton(frame: CGRect(x: 10, y: 100, width: 250, height: 40))
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        button.setTitle("Go to VC2", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 3
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.clear.cgColor
+        return button
+    }()
+    
+    let blueBtn :UIButton = {
+        let button = UIButton(frame: CGRect(x: 10, y: 200, width: 250, height: 40))
+        button.backgroundColor = UIColor.systemBlue
+        button.setTitle("Go to VC2 with blue bg", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 3
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.clear.cgColor
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        self.view.backgroundColor = bgColor
+        self.view.addSubview(btn)
+        self.view.addSubview(blueBtn)
+        btn.addTarget(self, action:#selector(btnAction), for: .touchUpInside)
+        blueBtn.addTarget(self, action:#selector(blueBtnAction), for: .touchUpInside)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc func btnAction() {
+        let vc2 = VC2()
+        vc2.delegate = self
+        self.navigationController?.pushViewController(vc2, animated: true)
+    }
+    
+    @objc func blueBtnAction() {
+        let vc2 = VC2()
+        vc2.bgColor = UIColor.systemBlue
+        vc2.delegate = self
+        self.navigationController?.pushViewController(vc2, animated: true)
+    }
+    
+    func changeBgToPinkOnBack() {
+        bgColor = .systemPink
+        view.backgroundColor = bgColor
+    }
+}
+
+class VC2: UIViewController {
+    var bgColor = UIColor.cyan
+    weak var delegate: VC1protocol?
+    
+    let btn :UIButton = {
+        let button = UIButton(frame: CGRect(x: 10, y: 100, width: 250, height: 40))
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        button.setTitle("back to VC1", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 3
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.clear.cgColor
+        return button
+    }()
+    
+    let pinkBtn :UIButton = {
+        let button = UIButton(frame: CGRect(x: 10, y: 200, width: 250, height: 40))
+        button.backgroundColor = UIColor.systemPink
+        button.setTitle("back to VC1 with pink color", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 3
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.clear.cgColor
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        self.view.backgroundColor = bgColor
+        self.view.addSubview(btn)
+        self.view.addSubview(pinkBtn)
+        btn.addTarget(self, action:#selector(btnAction), for: .touchUpInside)
+        pinkBtn.addTarget(self, action:#selector(pinkBtnAction), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc func btnAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func pinkBtnAction() {
+        self.delegate?.changeBgToPinkOnBack()
         self.navigationController?.popViewController(animated: true)
     }
 }
