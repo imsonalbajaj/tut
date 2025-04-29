@@ -8,21 +8,15 @@
 import SwiftUI
 import UIKit
 
-//MARK: 1
+//MARK: - 1.overlayVideo
 //struct ContentView: View {
 //    var body: some View {
-//        VStack {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundStyle(.tint)
-//            Text("Hello, world!")
-//        }
-//        .padding()
+//        OverlayVideo()
 //    }
 //}
 
 
-//MARK: 2
+//MARK: - 2.passData
 struct ContentView: View {
     var body: some View {
         Button("Present VC1") {
