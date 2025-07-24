@@ -351,6 +351,17 @@ extension Notification.Name {
 class VC1: UIViewController {
     var bgColor = UIColor.cyan
     
+    let crossBtn: UIButton = {
+        let button = UIButton(frame: CGRect(x: 10, y: 54, width: 32, height: 32))
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        button.setTitle(" x ", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 16
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.clear.cgColor
+        return button
+    }()
+    
     let btn :UIButton = {
         let button = UIButton(frame: CGRect(x: 10, y: 100, width: 250, height: 40))
         button.backgroundColor = UIColor.black.withAlphaComponent(0.2)
@@ -375,8 +386,10 @@ class VC1: UIViewController {
     
     override func viewDidLoad() {
         self.view.backgroundColor = bgColor
+        self.view.addSubview(crossBtn)
         self.view.addSubview(btn)
         self.view.addSubview(blueBtn)
+        crossBtn.addTarget(self, action:#selector(crossAction), for: .touchUpInside)
         btn.addTarget(self, action:#selector(btnAction), for: .touchUpInside)
         blueBtn.addTarget(self, action:#selector(blueBtnAction), for: .touchUpInside)
         
@@ -392,6 +405,10 @@ class VC1: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func crossAction() {
+        self.navigationController?.dismiss(animated: true)
     }
     
     @objc func btnAction() {
